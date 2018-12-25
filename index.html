@@ -6,40 +6,16 @@
 </head>
 
 <script src="https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js"></script>
-<script src="https://solid.github.io/releases/solid.js/solid-client-lite-0.22.5.min.js"></script>
+<!--<script src="https://solid.github.io/releases/solid.js/solid-client-lite-0.22.5.min.js"></script>-->
 <script src="https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"></script>
 
-<script>
-	// セッション確認
-	solid.auth.trackSession( session => {
-		if( !session )
-			console.log( 'The user is not logged in' )
-		else
-			console.log( `The user is ${session.webId}` )
-	} )
-
-	// ログイン
-	async function popupLogin() {
-		console.log( 'login' )
-		let session = await solid.auth.currentSession();
-		let popupUri = 'component/popup.html';
-		if( !session )
-			session = await solid.auth.popupLogin( { popupUri } );
-		console.log( `The user is ${session.webId}` )
-	}
-	popupLogin()
-
-
-	function logout() {
-		solid.auth.logout()
-		.then( () => alert( 'Goodbye!' ) );
-	}
-</script>
 
 <body>
+<div id="account">Name: <span id="account_uri"></span></div>
+
 <div id="console">
-	<button type="button" id="login_button" class="hidden">Login</button>
-	<button type="button" id="logout_button" class="hidden" onclick="logout()">Logout</button>
+	<button type="button" id="login_button" class="" onclick="popupLogin()">Login</button>
+	<button type="button" id="logout_button" class="" onclick="logout()">Logout</button>
 </div>
 
 <div class="content center-text hidden" id="view">
@@ -57,7 +33,8 @@
 </div>
 
 
-<script src="asset/js/app.js"></script>
+<!--<script src="asset/js/app.js"></script>-->
+<script src="asset/js/session.js"></script>
 
 </body>
 </html>
