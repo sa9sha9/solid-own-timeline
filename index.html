@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Own TimeLine</title>
+</head>
+
+<script src="https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js"></script>
+<script src="https://solid.github.io/releases/solid.js/solid-client-lite-0.22.5.min.js"></script>
+<script src="https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"></script>
+
+<script>
+	// セッション確認
+	solid.auth.trackSession( session => {
+		if( !session )
+			console.log( 'The user is not logged in' )
+		else
+			console.log( `The user is ${session.webId}` )
+	} )
+
+	// ログイン
+	async function popupLogin() {
+		console.log( 'login' )
+		let session = await solid.auth.currentSession();
+		let popupUri = 'component/popup.html';
+		if( !session )
+			session = await solid.auth.popupLogin( { popupUri } );
+		console.log( `The user is ${session.webId}` )
+	}
+	popupLogin()
+
+
+	function logout() {
+		solid.auth.logout()
+		.then( () => alert( 'Goodbye!' ) );
+	}
+</script>
+
+<body>
+<div id="console">
+	<button type="button" id="login_button" class="hidden">Login</button>
+	<button type="button" id="logout_button" class="hidden" onclick="logout()">Logout</button>
+</div>
+
+<div class="content center-text hidden" id="view">
+	<h1 id="view-title"></h1>
+	<br>
+	<div id="view-body"></div>
+</div>
+
+<div class="content center-text hidden" id="edit">
+	<input type="text" id="edit-title" class="block" placeholder="Title...">
+	<br>
+	<textarea id="edit-body" class="block" placeholder="Paste text here..."></textarea>
+	<br>
+	<button id="submit" class="btn">Publish</button>
+</div>
+
+
+<script src="asset/js/app.js"></script>
+
+</body>
+</html>
