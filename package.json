@@ -1,12 +1,13 @@
 {
   "name": "solid-own-timeline",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "asset/js/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "now": "now && now alias"
   },
-  "author": "",
+  "author": "sa9sha9",
   "license": "ISC",
   "dependencies": {
     "solid-auth-client": "^2.2.14"
