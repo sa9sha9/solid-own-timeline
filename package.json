@@ -10,6 +10,7 @@
   "author": "sa9sha9",
   "license": "ISC",
   "dependencies": {
+    "rdflib": "^0.19.1",
     "solid-auth-client": "^2.2.14"
   }
 }

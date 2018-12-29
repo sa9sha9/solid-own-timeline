@@ -16,9 +16,7 @@ function checkSession() {
 }
 checkSession()
 
-// ログイン
 async function popupLogin() {
-	console.log( 'login' )
 	let session = await solid.auth.currentSession();
 	let popupUri = '../component/popup.html';
 	if( !session )
@@ -35,12 +33,14 @@ function logout() {
 	} );
 }
 
-async function greetUser() {
+async function getUser() {
 	const session = await solid.auth.currentSession();
-	if( !session )
-		alert( 'Hello stranger!' );
-	else
-		alert( `Hello ${session.webId}!` );
+	if( !session ) {
+		console.warn( 'Not logged in. Please Login in your account.' )
+		popupLogin()
+	} else {
+		console.log( session )
+	}
 }
 
 // greetUser();

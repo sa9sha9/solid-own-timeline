@@ -5,18 +5,22 @@
 	<title>Own TimeLine</title>
 </head>
 
-<script src="https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js"></script>
+<!--<script src="https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js"></script>-->
 <!--<script src="https://solid.github.io/releases/solid.js/solid-client-lite-0.22.5.min.js"></script>-->
-<script src="https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"></script>
+<script src="asset/js/vendor/solid-auth-client/dist-lib/solid-auth-client.bundle.js"></script>
+<script src="asset/js/vendor/rdflib/dist/rdflib.min.js"></script>
 
 
 <body>
 <div id="account">Name: <span id="account_uri"></span></div>
 
+
+
 <div id="console">
 	<button type="button" id="login_button" class="" onclick="popupLogin()">Login</button>
 	<button type="button" id="logout_button" class="" onclick="logout()">Logout</button>
 </div>
+
 
 <div class="content center-text hidden" id="view">
 	<h1 id="view-title"></h1>
