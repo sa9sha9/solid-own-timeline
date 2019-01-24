@@ -124,26 +124,224 @@ const post = {
 	body    : 'This is a body',
 	author  : 0,
 }
-makePost( authors, post )
 
-function makePost( authors, post ) {
-	const container = `${webId}/public/Test/facebook/`
 
-	store.add( $rdf.sym( container ), RDF( 'type' ), SIOC( 'Post' ) );
+const activity = [
+	{
+		"id"           : "2204947503165947_2160204937640204",
+		"message"      : "近くに薬学博士とかいないかな",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2160204937640204"
+	},
+	{
+		"id"           : "2204947503165947_2160204364306928",
+		"message"      : "みす。忘れてた。行けばよかった。",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2160204364306928"
+	},
+	{
+		"id"           : "2204947503165947_2156456638015034",
+		"message"      : "おれってアメとムチ使い分けててえらいっ！って思い込んでしまっている其の実、ただの気分の起伏の波に付き合わされてるだけと受け取られることもあるという自戒",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2156456638015034"
+	},
+	{
+		"id"           : "2204947503165947_2141411542852877",
+		"message"      : "あ！",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2141411542852877"
+	},
+	{
+		"id"           : "2204947503165947_2126029354391096",
+		"message"      : `話題の[世界を変えた書物]展💁‍♂️
+
+		知識として知っていたものを実際に目の当たりにすると「はあ！これか！」って、ついニヤケてしまう`,
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2126029354391096"
+	},
+	{
+		"id"           : "2204947503165947_2123245228002842",
+		"message"      : "本日はこちら💁‍♂️",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2123245228002842"
+	},
+	{
+		"id"           : "2204947503165947_2117118958615469",
+		"message"      : "既視感〜",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2117118958615469"
+	},
+	{
+		"id"           : "2204947503165947_2114055928921772",
+		"message"      : `会津はよさげ
+
+	`,
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2114055928921772"
+	},
+	{
+		"id"           : "2204947503165947_2112237832436915",
+		"message"      : "now!",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2112237832436915"
+	},
+	{
+		"id"           : "2204947503165947_2111130575880974",
+		"message"      : "左が完全安静状態での測定。右が作業状態での測定。これはなかなか...?",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2111130575880974"
+	},
+	{
+		"id"           : "2204947503165947_2111125015881530",
+		"message"      : "これはアロマテラピーハックが捗るものではないか！",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2111125015881530"
+	},
+	{
+		"id"           : "2204947503165947_2109763646017667",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2109763646017667"
+	},
+	{
+		"id"           : "2204947503165947_2108036619523703",
+		"message"      : "CrankWheel便利かも！普通の画面共有ツールではあるんだが、閲覧者はただブラウザがあれば共有画面が見られる。なんの用意もなしに。スマホでもOK。",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2108036619523703"
+	},
+	{
+		"id"           : "2204947503165947_2098783173782381",
+		"message"      : "果たしてCDOを誰が務めるのか..！",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2098783173782381"
+	},
+	{
+		"id"           : "2204947503165947_2085611855099513",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2085611855099513"
+	},
+	{
+		"id"           : "2204947503165947_2085493811777984",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2085493811777984"
+	},
+	{
+		"id"           : "2204947503165947_2081629402164425",
+		"message"      : "oh...",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2081629402164425"
+	},
+	{
+		"id"           : "2204947503165947_2074943682832997",
+		"message"      : "約一ヶ月半、プロダクト開発のために東京にいたけれど、地方にとんでくるエンジニアの気持ちがいまならちょっとだけわかるの。",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2074943682832997"
+	},
+	{
+		"id"           : "2204947503165947_2045737042420328",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2045737042420328"
+	},
+	{
+		"id"           : "2204947503165947_2028512537476112",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2028512537476112"
+	},
+	{
+		"id"           : "2204947503165947_2028016960859003",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2028016960859003"
+	},
+	{
+		"id"           : "2204947503165947_2020613741599325",
+		"message"      : "' z 'キーが反応しなくなってしまい大ピンチ",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2020613741599325"
+	},
+	{
+		"id"           : "2204947503165947_2019101935083839",
+		"message"      : "こんなゴツゴツゴリッゴリな感じのラインナップで「乗り換え応援❤️」なんてギャップ萌え",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2019101935083839"
+	},
+	{
+		"id"           : "2204947503165947_2018755461785153",
+		"message"      : "夜の会津に繰り出すと、まさかの徳納 弘和おじちゃん",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2018755461785153"
+	},
+	{
+		"id"           : "2204947503165947_2016460748681291",
+		"message"      : "そういえば、きょうのお昼にいった定食屋さんにて、「お兄ちゃんコーヒー飲むかい？」ってコーヒーを頂いたんですけれども、こういうのがあるからローカル店はやめられないよね",
+		"permalink_url": "https://www.facebook.com/2204947503165947/posts/2016460748681291"
+	}
+];
+
+// https://service.infocom.co.jp/das/loddiary/2015/01/20150127001259.html
+const act = {
+	"@context": {
+		"@base"  : "https://www.facebook.com/2204947503165947/posts/",
+		"note"   : "https://www.w3.org/ns/activitystreams#Note",
+		"value"  : "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+		"uri"    : "@id",
+		"like"   : "@id",
+		"post"   : "@graph",
+		"comment": "$graph",
+	},
+	"post"    : [
+		{
+			"id": "2160204937640204",
+			"permalink": "https://www.facebook.com/2204947503165947/posts/2160204937640204",
+			"note"     : "近くに薬学博士とかいないかな",
+			"comment"  : [
+				{
+					"user" : "Mr. XXX",
+					"value": "hogehoge"
+				}
+			],
+			"like"     : [
+				"Mr. XXX", "Ms. YYY"
+			],
+			"created" : '2019-01-17T00:00:00',
+			"modified": '2019-01-17T00:00:00',
+		},
+		{
+			"id": "2160204364306928",
+			"permalink": "https://www.facebook.com/2204947503165947/posts/2160204364306928",
+			"note"     : "みす。忘れてた。行けばよかった。",
+			"comment"  : [
+				{
+					"user" : "Mr. HOGE",
+					"value": "hogehoge"
+				}
+			],
+			"like"     : [
+				"Mr. HOGE",
+			],
+			"created" : '2019-01-17T00:00:00',
+			"modified": '2019-01-17T00:00:00',
+		},
+	],
+	filename: 'index.ttl',
+	title   : 'This is title',
+	created : '2019-01-17T00:00:00',
+	modified: '2019-01-17T00:00:00',
+	body    : 'This is a body',
+	author  : 0,
+}
+
+makePost( authors, act )
+
+function makePost( authors, act ) {
+	const container = $rdf.sym( `${webId}/public/Test/facebook/` )
+	const uri = $rdf.sym( `${container.uri}posts` )
+
 	// store.add( $rdf.sym(container), DCT( 'title' ), $rdf.lit( post.title ) );
 	// store.add( $rdf.sym(container), SIOC( 'has_creator' ), $rdf.sym( `${container}#author` ) );
-	// store.add( $rdf.sym(container), DCT( 'created' ), $rdf.lit( post.created, '', XSD( 'dateTime' ) ) );
-	// store.add( $rdf.sym(container), DCT( 'modified' ), $rdf.lit( post.modified, '', XSD( 'dateTime' ) ) );
-	store.add( $rdf.sym( container ), SIOC( 'content' ), $rdf.lit( post.body ) );
+	store.add( uri, RDF( 'type' ), SIOC( 'Container' ) );
+	store.add( uri, DCT( 'created' ), $rdf.lit( act.created, '', XSD( 'dateTime' ) ) );
+	store.add( uri, DCT( 'modified' ), $rdf.lit( act.modified, '', XSD( 'dateTime' ) ) );
 
+	for(let a of act.post ) {
+		const it = $rdf.sym(`${uri.uri}#${a.id}`)
+		store.add( it, RDF( 'type' ), ACT( 'Note' ) );
+		store.add( it, SIOC( 'container_of' ), uri );
+		store.add( it, SIOC( 'link' ), a.permalink )
+		store.add( it, ACT( 'Note' ), a.note ) // encode html
+		store.add( it, ACT( 'Comment' ), a.comment )
+		store.add( it, ACT( 'Like' ), a.like )
+		store.add( it, DCT( 'created' ), $rdf.lit( a.created, '', XSD( 'dateTime' ) ) );
+		store.add( it, DCT( 'modified' ), $rdf.lit( a.modified, '', XSD( 'dateTime' ) ) );
+	}
+	// store.add( container, SIOC( 'content' ), $rdf.lit( act ) );
 	// store.add( $rdf.sym( `${container}#author` ), RDF( 'type' ), SIOC( 'UserAccount' ) );
 	// store.add( $rdf.sym( `${container}#author` ), SIOC( 'account_of' ), $rdf.sym( post.author ) );
 	// store.add( $rdf.sym( `${container}#author` ), FOAF( 'name' ), $rdf.lit( authors[ post.author ].name ) );
 	// store.add( $rdf.sym( `${container}#author` ), SIOC( 'avatar' ), $rdf.sym( authors[ post.author ].picture ) );
 
 	let triples = new $rdf.Serializer( store ).toN3( store )
-	post.body = triples
-	createPost(container, post)
+	const post = {
+		body: triples,
+		filename: act.filename
+	}
+	debugger
+	createPost( container.uri, post )
+
 
 	// if (url) {
 	// 	let writer = Solid.web.put(url, triples);
@@ -200,6 +398,8 @@ function createPost( container, post ) {
 		function( res ) {
 			// all done, clean up and go to initial state
 			debugger
+
+			getPost( uri )
 		}
 	)
 	.catch(
@@ -211,6 +411,16 @@ function createPost( container, post ) {
 
 function deletePost( uri ) {
 	fetcher.webOperation( 'DELETE', uri )
+	.then( ( res ) => {
+		debugger
+	} )
+	.catch( ( err ) => {
+		debugger
+	} )
+}
+
+function getPost( uri ) {
+	fetcher.fetchUri( uri )
 	.then( ( res ) => {
 		debugger
 	} )
