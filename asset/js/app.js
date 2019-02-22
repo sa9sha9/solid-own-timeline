@@ -95,21 +95,21 @@ const decodeHTML = function( html ) {
 // 	}
 // } )
 
-getPublicContainer( webId )
-
-function getPublicContainer( id ) {
-	const LDP = $rdf.Namespace( 'http://www.w3.org/ns/ldp#' );
-
-	let folder = $rdf.sym( `${id}/public/` );  // NOTE: Ends in a slash
-	debugger
-	fetcher.load( folder ).then( () => {
-		let files = store.each( folder, LDP( 'contains' ) );
-		debugger
-		// files.forEach( file ){
-		// 	console.log( ' contains ' + file );
-		// }
-	} );
-}
+// getPublicContainer( webId )
+//
+// function getPublicContainer( id ) {
+// 	const LDP = $rdf.Namespace( 'http://www.w3.org/ns/ldp#' );
+//
+// 	let folder = $rdf.sym( `${id}/public/` );  // NOTE: Ends in a slash
+// 	debugger
+// 	fetcher.load( folder ).then( () => {
+// 		let files = store.each( folder, LDP( 'contains' ) );
+// 		debugger
+// 		// files.forEach( file ){
+// 		// 	console.log( ' contains ' + file );
+// 		// }
+// 	} );
+// }
 
 
 // Make data
@@ -125,8 +125,77 @@ const post = {
 	author  : 0,
 }
 
+const hoge =
+{
+	"created_at":"Thu Apr 06",
+	"text":"お餅食べすぎたもうきなこだけでいい",
+	"url":"https://t.co/XweGGOWIIEN123K",
+	"retweet_count":284,
+	"favorite_count":0,
+	"replies": ...
+}
+const fuga =
+{
+	"id"                    : "220494
+	"published"       : "Thu Apr 06",
+	"message"        : "薬学博士とかいないかな",
+	"permalink_url": "https..."
+	"likes"                : 24,
+	"comments"     : ...
+}
+const zuba = [
+	{
+		"type": "Note",
+		"id": "me",
+		"origin": "https://twitter.com",
+		"content": "お餅食べすぎたもうきなこだけでいい",
+		"published": "Thu Apr 06",
+		"url":"https://t.co/XweGGOWIIEN123K",
+		"replies": ...
+	},
+	{
+		"type": "Note",
+		"id": "me",
+		"origin": "https://www.facebook.com",
+		"content": "薬学博士とかいないかな",
+		"published": "Thu Apr 06",
+		"url":"https://fb.com/53/2",
+		"replies": ...
+	},
+]
 
-const activity = [
+const tw = [
+	{
+		"created_at"        : "Thu Apr 06 15:28:43 +0000 2017",
+		"id"                : 850007368138018817,
+		"id_str"            : "850007368138018817",
+		"text"              : "RT @TwitterDev: 1/ Today we’re sharing our vision for the future of the Twitter API platform!nhttps://t.co/XweGngmxlP",
+		"truncated"         : false,
+		"entities"          : {
+			"urls": [
+				{
+					"url"         : "https://t.co/XweGngmxlP",
+					"expanded_url": "https://cards.twitter.com/cards/18ce53wgo4h/3xo1c",
+					"display_url" : "cards.twitter.com/cards/18ce53wg…",
+				}
+			]
+		},
+		"source"            : "<a href=\"http: //twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+		"user"              : {
+			"id"    : 6253282,
+			"id_str": "6253282",
+			"name"  : "Twitter API",
+		},
+		"retweet_count"     : 284,
+		"favorite_count"    : 0,
+		"favorited"         : false,
+		"retweeted"         : false,
+		"possibly_sensitive": false,
+		"lang"              : "en",
+	},
+]
+
+const fb = [
 	{
 		"id"           : "2204947503165947_2160204937640204",
 		"message"      : "近くに薬学博士とかいないかな",
@@ -265,7 +334,7 @@ const act = {
 	},
 	"post"    : [
 		{
-			"id": "2160204937640204",
+			"id"       : "2160204937640204",
 			"permalink": "https://www.facebook.com/2204947503165947/posts/2160204937640204",
 			"note"     : "近くに薬学博士とかいないかな",
 			"comment"  : [
@@ -277,11 +346,11 @@ const act = {
 			"like"     : [
 				"Mr. XXX", "Ms. YYY"
 			],
-			"created" : '2019-01-17T00:00:00',
-			"modified": '2019-01-17T00:00:00',
+			"created"  : '2019-01-17T00:00:00',
+			"modified" : '2019-01-17T00:00:00',
 		},
 		{
-			"id": "2160204364306928",
+			"id"       : "2160204364306928",
 			"permalink": "https://www.facebook.com/2204947503165947/posts/2160204364306928",
 			"note"     : "みす。忘れてた。行けばよかった。",
 			"comment"  : [
@@ -293,40 +362,41 @@ const act = {
 			"like"     : [
 				"Mr. HOGE",
 			],
-			"created" : '2019-01-17T00:00:00',
-			"modified": '2019-01-17T00:00:00',
+			"created"  : '2019-01-17T00:00:00',
+			"modified" : '2019-01-17T00:00:00',
 		},
 	],
-	filename: 'index.ttl',
-	title   : 'This is title',
-	created : '2019-01-17T00:00:00',
-	modified: '2019-01-17T00:00:00',
-	body    : 'This is a body',
-	author  : 0,
+	filename  : 'index.ttl',
+	title     : 'This is title',
+	created   : '2019-01-17T00:00:00',
+	modified  : '2019-01-17T00:00:00',
+	body      : 'This is a body',
+	author    : 0,
 }
+
 
 makePost( authors, act )
 
 function makePost( authors, act ) {
-	const container = $rdf.sym( `${webId}/public/Test/facebook/` )
-	const uri = $rdf.sym( `${container.uri}posts` )
+	const g = $rdf.graph()
+	const containerURI = `${webId}/public/Test/`
+	const indexURI = `${containerURI}activity.ttl`
 
 	// store.add( $rdf.sym(container), DCT( 'title' ), $rdf.lit( post.title ) );
 	// store.add( $rdf.sym(container), SIOC( 'has_creator' ), $rdf.sym( `${container}#author` ) );
-	store.add( uri, RDF( 'type' ), SIOC( 'Container' ) );
-	store.add( uri, DCT( 'created' ), $rdf.lit( act.created, '', XSD( 'dateTime' ) ) );
-	store.add( uri, DCT( 'modified' ), $rdf.lit( act.modified, '', XSD( 'dateTime' ) ) );
+	g.add( g.sym( `${indexURI}` ), RDF( 'type' ), ACT( 'Activity' ) );
+	g.add( g.sym( `${indexURI}` ), DCT( 'created' ), $rdf.lit( act.created, '', XSD( 'dateTime' ) ) );
+	g.add( g.sym( `${indexURI}` ), DCT( 'modified' ), $rdf.lit( act.modified, '', XSD( 'dateTime' ) ) );
 
-	for(let a of act.post ) {
-		const it = $rdf.sym(`${uri.uri}#${a.id}`)
-		store.add( it, RDF( 'type' ), ACT( 'Note' ) );
-		store.add( it, SIOC( 'container_of' ), uri );
-		store.add( it, SIOC( 'link' ), a.permalink )
-		store.add( it, ACT( 'Note' ), a.note ) // encode html
-		store.add( it, ACT( 'Comment' ), a.comment )
-		store.add( it, ACT( 'Like' ), a.like )
-		store.add( it, DCT( 'created' ), $rdf.lit( a.created, '', XSD( 'dateTime' ) ) );
-		store.add( it, DCT( 'modified' ), $rdf.lit( a.modified, '', XSD( 'dateTime' ) ) );
+	for( let a of act.post ) {
+		const it = g.sym( `${indexURI}#${a.id}` )
+		g.add( it, RDF( 'type' ), ACT( 'Note' ) );
+		g.add( it, SIOC( 'link' ), a.permalink )
+		g.add( it, ACT( 'content' ), a.note ) // encode html
+		g.add( it, ACT( 'Comment' ), a.comment ) // use blank node
+		g.add( it, ACT( 'Like' ), a.like )
+		g.add( it, DCT( 'created' ), $rdf.lit( a.created, '', XSD( 'dateTime' ) ) );
+		g.add( it, DCT( 'modified' ), $rdf.lit( a.modified, '', XSD( 'dateTime' ) ) );
 	}
 	// store.add( container, SIOC( 'content' ), $rdf.lit( act ) );
 	// store.add( $rdf.sym( `${container}#author` ), RDF( 'type' ), SIOC( 'UserAccount' ) );
@@ -334,14 +404,15 @@ function makePost( authors, act ) {
 	// store.add( $rdf.sym( `${container}#author` ), FOAF( 'name' ), $rdf.lit( authors[ post.author ].name ) );
 	// store.add( $rdf.sym( `${container}#author` ), SIOC( 'avatar' ), $rdf.sym( authors[ post.author ].picture ) );
 
-	let triples = new $rdf.Serializer( store ).toN3( store )
+	let triples = new $rdf.Serializer( g ).setBase( indexURI ).toN3( g )
 	const post = {
-		body: triples,
+		body    : triples,
 		filename: act.filename
 	}
 	debugger
-	createPost( container.uri, post )
+	createPost( containerURI, post )
 
+	getPost( indexURI )
 
 	// if (url) {
 	// 	let writer = Solid.web.put(url, triples);
@@ -398,8 +469,6 @@ function createPost( container, post ) {
 		function( res ) {
 			// all done, clean up and go to initial state
 			debugger
-
-			getPost( uri )
 		}
 	)
 	.catch(
@@ -419,12 +488,24 @@ function deletePost( uri ) {
 	} )
 }
 
-function getPost( uri ) {
-	fetcher.fetchUri( uri )
-	.then( ( res ) => {
+function getPost( uri, store ) {
+	const g = $rdf.graph();
+	const fetcher = new $rdf.Fetcher( g, timeout )
+
+	fetcher.load( uri ).then( response => {
 		debugger
-	} )
-	.catch( ( err ) => {
+		// let name = store.any(me, VCARD('fn'));
+		// console.log(`Loaded ${name || 'wot no name?'}`);
+	}, err => {
 		debugger
-	} )
+		console.log( "Load failed " + err );
+	} );
+
+	// fetcher.fetchUri( uri )
+	// .then( ( res ) => {
+	// 	debugger
+	// } )
+	// .catch( ( err ) => {
+	// 	debugger
+	// } )
 }

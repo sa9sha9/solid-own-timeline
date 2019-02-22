@@ -33,8 +33,8 @@ function logout() {
 	} );
 }
 
-async function getUser() {
-	const session = await solid.auth.currentSession();
+function getUser() {
+	const session = solid.auth.currentSession();
 	if( !session ) {
 		console.warn( 'Not logged in. Please Login in your account.' )
 		popupLogin()
